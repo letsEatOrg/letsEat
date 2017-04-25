@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 
 class loginViewController: UIViewController {
@@ -25,6 +26,7 @@ class loginViewController: UIViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         let username = usernameTextField.text
         let password = passwordTextField.text
         PFUser.logInWithUsername(inBackground: username!, password: password!) { (logedInUser: PFUser?, loginError: Error?) in
@@ -38,6 +40,7 @@ class loginViewController: UIViewController {
             }
             else {
                 print("successfully logged In")
+                MBProgressHUD.hide(for: self.view, animated: true)
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 
                 // Query the user info class in the disk to get the data about

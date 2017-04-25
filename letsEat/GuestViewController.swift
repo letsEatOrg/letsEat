@@ -17,7 +17,7 @@ class GuestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guestLabel.text = guest
+        guestLabel.text = self.guest
     }
     
     @IBAction func DoneButtonPressed(_ sender: Any) {
@@ -28,4 +28,5 @@ class GuestViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
 }

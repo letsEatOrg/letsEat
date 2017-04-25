@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
 
 
 // TODO: maybe you shoud try and implement the resturent an user has visited in this
@@ -72,6 +73,7 @@ class profileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func logoutButton(_ sender: Any) {
         let alertCotroller = UIAlertController(title: nil, message: "Are you sure you want to logout?", preferredStyle: .actionSheet)
         alertCotroller.addAction(UIAlertAction(title: "logout", style: .default, handler: { (_) in
+            MBProgressHUD.showAdded(to: self.view, animated: true)
             self.logoutUser()
         }))
         alertCotroller.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
@@ -83,6 +85,7 @@ class profileViewController: UIViewController, UIImagePickerControllerDelegate, 
             if logoutError == nil {
                 User.currentUser = nil
                 NotificationCenter.default.post(name: NSNotification.Name(NotificationKeys.logoutKey), object: self)
+                MBProgressHUD.hide(for: self.view, animated: true)
             }
             else {
                  print("error logging out")

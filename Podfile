@@ -10,4 +10,5 @@ target 'letsEat' do
   pod 'BDBOAuth1Manager'
   pod ‘MBProgressHUD’
   pod 'Parse'
+	
 end
